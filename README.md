@@ -1,2 +1,2 @@
-# quicktype
-Suggestive type
+# Suggestit
+
