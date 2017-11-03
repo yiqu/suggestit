@@ -1,5 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { SuggestModule } from './suggest/suggest.module';
+import { NotFoundModule } from './404/404.module';
 
 import { AppComponent } from './app.component';
 
@@ -7,10 +14,21 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent
   ],
+
   imports: [
-    BrowserModule
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    NotFoundModule,
+    SuggestModule
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
