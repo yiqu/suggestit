@@ -2,6 +2,8 @@
 
 /* import Material theme */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Poppins|Roboto');
 
 /* Global Properties */
 .wrap {
@@ -11,5 +13,5 @@
 
 .center {
   text-align: center;
-  max-width: 30rem;
+  max-width: 50rem;
 }

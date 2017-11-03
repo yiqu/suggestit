@@ -1,0 +1,15 @@
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.version {
+  font-size: 0.85rem;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.1rem;
+}

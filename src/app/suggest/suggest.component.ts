@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 /**
  * This class represents the body component.
  */

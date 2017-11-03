@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { SuggestComponent } from './suggest.component';
+import { TitleModule } from './title/title.module';
+import { SuggestionModule } from './suggestion/suggestion.module';
 
 
 /**
@@ -15,7 +17,9 @@ import { SuggestComponent } from './suggest.component';
 
   imports: [
     FormsModule,
-    HttpModule
+    HttpModule,
+    SuggestionModule,
+    TitleModule
   ],
 
   exports:[
