@@ -9,5 +9,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './suggest.component.html',
   styleUrls: ['./suggest.component.css']
 })
-
 export class SuggestComponent {}
