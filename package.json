@@ -2,7 +2,7 @@
   "name": "suggestit",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Quick Type - suggestions based on your type history",
+  "description": "Quick Type - suggestions based on your type",
   "repository": {
     "type": "git",
     "url": "https://github.com/yiqu/suggestit.git"
