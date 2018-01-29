@@ -1,0 +1,15 @@
+<mat-expansion-panel [disabled]="disabled" [expanded]="step===1" (opened)="openPanel(1)">
+  <mat-expansion-panel-header>
+    <mat-panel-title class="training-title">
+      Suggest Area
+    </mat-panel-title>
+    <mat-panel-description>
+
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <textarea matInput class="input-area" [(ngModel)]="userInput" (ngModelChange)="userInputChange()"
+    [placeholder]="userInputPlaceHolder"></textarea>
+  <mat-action-row>
+    <button mat-raised-button color="accent" (click)="previousStep()">Back</button>
+  </mat-action-row>
+</mat-expansion-panel>

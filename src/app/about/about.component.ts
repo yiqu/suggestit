@@ -16,9 +16,16 @@ export class AboutComponent {
   // change log information array
   changelog: Array<any> = [
     {
-      version: '1.0.0',
+      version: '0.0.1',
       date: new Date('6/30/17'),
       changes: 'Created initial version',
+      externalLink: undefined,
+      linkUrl: null
+    },
+    {
+      version: '0.1.1',
+      date: new Date('1/28/18'),
+      changes: 'Added input area',
       externalLink: undefined,
       linkUrl: null
     }

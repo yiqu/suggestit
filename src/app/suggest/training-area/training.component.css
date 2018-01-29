@@ -1,0 +1,17 @@
+.training-title {
+  font-size: 18px;
+}
+
+.headers-align {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-area {
+  min-height: 8rem;
+  min-width: 100%;
+  max-width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  color: #4d4d4d;
+}

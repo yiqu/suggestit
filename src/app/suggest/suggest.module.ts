@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { SuggestComponent } from './suggest.component';
-import { TitleModule } from './title/title.module';
-import { SuggestionModule } from './suggestion/suggestion.module';
+import { TrainingInputModule } from './training-area/training.module';
 
 
 /**
@@ -16,10 +13,7 @@ import { SuggestionModule } from './suggestion/suggestion.module';
   ],
 
   imports: [
-    FormsModule,
-    HttpModule,
-    SuggestionModule,
-    TitleModule
+    TrainingInputModule
   ],
 
   exports:[

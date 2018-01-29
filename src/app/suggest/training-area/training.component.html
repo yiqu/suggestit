@@ -1,0 +1,25 @@
+<div class="wrap">
+  <mat-accordion class="headers-align">
+    <mat-expansion-panel [expanded]="step===0" (opened)="openPanel(0)">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="training-title">
+          Training Area
+        </mat-panel-title>
+        <mat-panel-description>
+          <training-status [payload]="trainingText" [timeOut]="1100" 
+            (status)="onStatusChange($event)">
+          </training-status>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <textarea matInput class="input-area" [(ngModel)]="trainingText" (ngModelChange)="trainingTextChange()"
+        [placeholder]="trainingTextAreaPlaceholder"></textarea>
+      <mat-action-row>
+        <button mat-raised-button [disabled]="trainingStatus !== 1" 
+          color="primary" (click)="nextStep()">{{trainingButtonText}}</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <suggest-area [step]="step" [disabled]="trainingStatus !== 1" (setStepRequest)="onSetStepRequest($event)"></suggest-area>
+
+  </mat-accordion>
+</div>
