@@ -1,8 +1,8 @@
 {
   "name": "suggestit",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "license": "MIT",
-  "description": "Quick Type on a web browser - build with Angular and Material",
+  "description": "Quick Type - suggestions based on your type",
   "repository": {
     "type": "git",
     "url": "https://github.com/yiqu/suggestit.git"
