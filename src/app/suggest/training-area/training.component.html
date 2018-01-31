@@ -14,6 +14,10 @@
       <textarea matInput class="input-area" [(ngModel)]="trainingText" (ngModelChange)="trainingTextChange()"
         [placeholder]="trainingTextAreaPlaceholder"></textarea>
       <mat-action-row>
+        <span *ngFor="let button of trainingButtons">
+          <button class="train-example-button" mat-button [color]="button.buttonColor" 
+            (click)="loadExampleTraining(button.selection)">{{button.displayName}}</button>
+        </span>
         <button mat-raised-button [disabled]="trainingStatus !== 1" 
           color="primary" (click)="nextStep()">{{trainingButtonText}}</button>
       </mat-action-row>

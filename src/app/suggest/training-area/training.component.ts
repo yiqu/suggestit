@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Word } from '../../shared/models/word.model';
+import { CalculateService } from '../../shared/service/calculate.service';
+import { SampleButton } from '../../shared/models/button-sample.model';
+import { SamplePayload } from '../../shared/models/sample-text.model';
 
 /**
  * Suggestion component, where word chips are shown
@@ -18,7 +21,12 @@ export class TrainingComponent implements OnInit {
   trainingTextAreaPlaceholder: string ="Type into the text area below to get started...";
   trainingStatus: number;
   trainingButtonText: string = "Next";
+  trainingButtons: SampleButton[];
   
+  constructor(private cs: CalculateService ) {
+    this.trainingButtons = this.cs.createSampleButtons();
+  }
+
   ngOnInit() {}
 
   openPanel(step: number) {
@@ -26,7 +34,6 @@ export class TrainingComponent implements OnInit {
   }
 
   trainingTextChange() {
-    console.log(this.trainingText);
   }
 
   nextStep() {
@@ -50,6 +57,14 @@ export class TrainingComponent implements OnInit {
         this.trainingButtonText = "Next";
         break;
     }
+  }
+
+  loadExampleTraining(selection: string) {
+    this.cs.getTrainingExample(selection).subscribe(
+      (res: SamplePayload) => {
+        this.trainingText = res.data;
+      }
+    )
   }
 
  

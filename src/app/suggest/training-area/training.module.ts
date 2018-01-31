@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatExpansionModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
@@ -9,6 +10,7 @@ import { TrainingStatusModule } from '../../shared/training-status/status.module
 
 @NgModule({
   imports: [
+    CommonModule, // enables ngFor
     FormsModule, //enables [(ngModel)] 2 way binding
     MatExpansionModule,
     MatIconModule,

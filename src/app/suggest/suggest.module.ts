@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SuggestComponent } from './suggest.component';
 import { TrainingInputModule } from './training-area/training.module';
+import { CalculateService } from '../shared/service/calculate.service';
 
 
 /**
@@ -20,6 +21,8 @@ import { TrainingInputModule } from './training-area/training.module';
     SuggestComponent
   ],
 
-  providers: []
+  providers: [
+    CalculateService
+  ]
 })
 export class SuggestModule {}
