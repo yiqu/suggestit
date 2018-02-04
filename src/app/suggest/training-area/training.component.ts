@@ -34,9 +34,10 @@ export class TrainingComponent implements OnInit {
   }
 
   trainingTextChange() {
+    this.cs.sendForProcess(this.trainingText);
   }
 
-  nextStep() {
+  onNextStep() {
     this.step ++;
   }
 

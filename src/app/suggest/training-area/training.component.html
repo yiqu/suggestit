@@ -6,7 +6,7 @@
           Training Area
         </mat-panel-title>
         <mat-panel-description>
-          <training-status [payload]="trainingText" [timeOut]="1100" 
+          <training-status [payload]="trainingText" [timeOut]="500" 
             (status)="onStatusChange($event)">
           </training-status>
         </mat-panel-description>
@@ -15,11 +15,11 @@
         [placeholder]="trainingTextAreaPlaceholder"></textarea>
       <mat-action-row>
         <span *ngFor="let button of trainingButtons">
-          <button class="train-example-button" mat-button [color]="button.buttonColor" 
+          <button class="train-example-button" mat-raised-button [color]="button.buttonColor" 
             (click)="loadExampleTraining(button.selection)">{{button.displayName}}</button>
         </span>
         <button mat-raised-button [disabled]="trainingStatus !== 1" 
-          color="primary" (click)="nextStep()">{{trainingButtonText}}</button>
+          color="primary" (click)="onNextStep()">{{trainingButtonText}}</button>
       </mat-action-row>
     </mat-expansion-panel>
 

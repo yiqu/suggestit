@@ -6,23 +6,27 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map'
 import { Word } from '../models/word.model';
 import { SamplePayload } from '../models/sample-text.model';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class CalculateService {
 
+  public wordSub: Observable<Word[]> = new Observable<Word[]>();
+  private wordArray: string[];
 
   /**
    * Creates a new WordService with the injected Http.
    * @param {Http} http - The injected Http.
    * @constructor
    */
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+  }
 
 
   createSampleButtons(): SampleButton[] {
     let sampleButtonList: SampleButton[] = [
       {
-        displayName: "Training Example 1",
+        displayName: "Example 1",
         selection: "1",
         buttonColor: "accent"
       }
@@ -37,6 +41,26 @@ export class CalculateService {
       (res) => {
         return <SamplePayload>res.json();
       });
+  }
+
+
+
+  sendForProcess(rawText: string) {
+    this.wordArray = this.extractWords(rawText);
+  }
+
+
+  /**
+   * Helper function to parse out rightly formed words.
+   * 
+   * @param {string} input - user input
+   * @returns {Array<string>} - list of words without badly formed words
+   */
+  extractWords(input: string): Array<string> {
+    if (input === "") {
+      return [];
+    }
+    return input.toLowerCase().match(/\b[^\d^_\W]+\b/g);
   }
 
 }

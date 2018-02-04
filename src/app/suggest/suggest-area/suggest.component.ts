@@ -23,7 +23,7 @@ export class SuggestInputComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   userInputChange() {
     console.log(this.userInput);
