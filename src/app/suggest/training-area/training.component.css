@@ -16,6 +16,10 @@
   color: #4d4d4d;
 }
 
-.train-example-button {
-  margin-right: 100%;
+.train-bar {
+  margin-right: 10px;
+}
+
+.train-select {
+  bottom: 3px;
 }

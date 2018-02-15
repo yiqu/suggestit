@@ -3,6 +3,7 @@ import { Word } from '../../shared/models/word.model';
 import { CalculateService } from '../../shared/service/calculate.service';
 import { SampleButton } from '../../shared/models/button-sample.model';
 import { SamplePayload } from '../../shared/models/sample-text.model';
+import { MatSelectChange } from '@angular/material/select';
 
 /**
  * Suggestion component, where word chips are shown
@@ -18,7 +19,8 @@ export class TrainingComponent implements OnInit {
 
   step: number = 0;
   trainingText: string = "";
-  trainingTextAreaPlaceholder: string ="Type into the text area below to get started...";
+  trainingTextAreaPlaceholder: string ="Type into the text area below to get started..." +
+  " Or use one of training examples we have provided.";
   trainingStatus: number;
   trainingButtonText: string = "Next";
   trainingButtons: SampleButton[];
@@ -64,8 +66,16 @@ export class TrainingComponent implements OnInit {
     this.cs.getTrainingExample(selection).subscribe(
       (res: SamplePayload) => {
         this.trainingText = res.data;
+      },
+      error => {},
+      () => {
+        this.cs.sendForProcess(this.trainingText);
       }
     )
+  }
+
+  onTrainingExampleSelect(value: MatSelectChange) {
+    this.loadExampleTraining(value.value);
   }
 
  

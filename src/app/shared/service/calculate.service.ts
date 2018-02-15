@@ -27,8 +27,15 @@ export class CalculateService {
     let sampleButtonList: SampleButton[] = [
       {
         displayName: "Example 1",
-        selection: "1",
-        buttonColor: "accent"
+        value: "1",
+      },
+      {
+        displayName: "Example 2",
+        value: "2",
+      },
+      {
+        displayName: "Example 3",
+        value: "3",
       }
     ];
     return sampleButtonList;
@@ -47,6 +54,7 @@ export class CalculateService {
 
   sendForProcess(rawText: string) {
     this.wordArray = this.extractWords(rawText);
+    console.log(this.wordArray);
   }
 
 

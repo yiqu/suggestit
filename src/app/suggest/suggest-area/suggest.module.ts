@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MatExpansionModule } from '@angular/material';
-import { MatIconModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
-
+import { MaterialModule } from '../../shared/common-modules/material.module';
+import { NgCoreModule } from '../../shared/common-modules/ng-core.module';
 import { SuggestInputComponent } from './suggest.component';
 
 @NgModule({
   imports: [
-    FormsModule,
-    MatExpansionModule,
-    MatIconModule,
-    MatButtonModule
+    MaterialModule,
+    NgCoreModule
   ],
 
   exports: [

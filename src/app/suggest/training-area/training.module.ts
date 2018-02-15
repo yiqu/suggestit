@@ -1,20 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatExpansionModule } from '@angular/material';
-import { MatIconModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { NgCoreModule } from '../../shared/common-modules/ng-core.module';
+import { MaterialModule } from '../../shared/common-modules/material.module';
+
 import { TrainingComponent } from './training.component';
 import { SuggestInputModule } from '../suggest-area/suggest.module';
 import { TrainingStatusModule } from '../../shared/training-status/status.module';
 
 @NgModule({
   imports: [
-    CommonModule, // enables ngFor
-    FormsModule, //enables [(ngModel)] 2 way binding
-    MatExpansionModule,
-    MatIconModule,
-    MatButtonModule,
+    MaterialModule,
+    NgCoreModule,
     SuggestInputModule,
     TrainingStatusModule
   ],

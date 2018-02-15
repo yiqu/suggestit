@@ -6,7 +6,7 @@
           Training Area
         </mat-panel-title>
         <mat-panel-description>
-          <training-status [payload]="trainingText" [timeOut]="500" 
+          <training-status [payload]="trainingText" [timeOut]="300" 
             (status)="onStatusChange($event)">
           </training-status>
         </mat-panel-description>
@@ -14,11 +14,15 @@
       <textarea matInput class="input-area" [(ngModel)]="trainingText" (ngModelChange)="trainingTextChange()"
         [placeholder]="trainingTextAreaPlaceholder"></textarea>
       <mat-action-row>
-        <span *ngFor="let button of trainingButtons">
-          <button class="train-example-button" mat-raised-button [color]="button.buttonColor" 
-            (click)="loadExampleTraining(button.selection)">{{button.displayName}}</button>
-        </span>
-        <button mat-raised-button [disabled]="trainingStatus !== 1" 
+        <div class="train-bar">
+          <mat-form-field class="train-select">
+            <mat-select placeholder="Training Examples" [disableRipple]="true" (selectionChange)="onTrainingExampleSelect($event)">
+              <mat-option *ngFor="let opt of trainingButtons" [value]="opt.value">{{opt.displayName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button [disabled]="trainingStatus !== 1" class="train-button"
           color="primary" (click)="onNextStep()">{{trainingButtonText}}</button>
       </mat-action-row>
     </mat-expansion-panel>

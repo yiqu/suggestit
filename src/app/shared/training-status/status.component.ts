@@ -47,7 +47,7 @@ export class TrainingStatusComponent implements OnChanges {
 
   inTraining(): void {
     this.matIconId = "mode_edit";
-    this.helpText = "training...";
+    this.helpText = "typing...";
     this.iconClass = "training-icon training";
     this.status.emit(0);
   }
