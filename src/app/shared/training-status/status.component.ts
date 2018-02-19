@@ -1,5 +1,7 @@
-import { Component, Input, Output, OnChanges, 
-  SimpleChange, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnChanges, SimpleChange, 
+  EventEmitter } from '@angular/core';
+import { CalculateService } from '../service/calculate.service';
+import { Word } from '../models/word.model';
 
 @Component({
   selector: 'training-status',
@@ -18,23 +20,28 @@ export class TrainingStatusComponent implements OnChanges {
   timeOut: number;
 
   completed: boolean;
-  timer: any;
   matIconId: string = "";
   helpText: string = "";
   iconClass: string = "";
 
-  constructor() {
+  constructor(private cs: CalculateService) {
   }
 
   ngOnChanges(changes: {[payload: string]: SimpleChange}) {
-    clearTimeout(this.timer);
     if (changes.payload.firstChange || changes.payload.currentValue.trim() === "") {
       this.needTraining();
     } else {
-      this.inTraining();
-      this.timer = setTimeout(() => {
-        this.doneTraining();
-      }, this.timeOut);
+      // call service to calculate words details
+      this.cs.sendForProcess(changes.payload.currentValue).subscribe(
+        (res: Word[]) => {
+          console.log(res);
+        },
+        error => {
+        },
+        () => {
+          this.doneTraining();
+        }
+      )
     }
   }
 

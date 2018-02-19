@@ -4,9 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import { SampleButton } from '../models/button-sample.model';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map'
+import 'rxjs/add/observable/of';
 import { Word } from '../models/word.model';
 import { SamplePayload } from '../models/sample-text.model';
 import { Subject } from 'rxjs/Subject';
+import { mapTo, delay } from 'rxjs/operators';
+
 
 @Injectable()
 export class CalculateService {
@@ -51,10 +54,24 @@ export class CalculateService {
   }
 
 
+  sendForProcess(rawText: string): Observable<Array<Word>> {
+    let parsedWords: string[] = this.extractWords(rawText);
+    let words: Array<Word> = [];
+    for (let parsedWord of parsedWords) {
+      // create word
+      let word = this.createWord(parsedWord);
+      // caluclate weight
 
-  sendForProcess(rawText: string) {
-    this.wordArray = this.extractWords(rawText);
-    console.log(this.wordArray);
+      // add to array
+      words.push(word);
+    }
+    // fake delay for 1 second
+    return Observable.of(words).pipe(delay(1000));
+  }
+
+
+  createWord(rawWord: string) {
+    return new Word(rawWord);
   }
 
 
