@@ -38,40 +38,43 @@ export class TrainingComponent implements OnInit {
   constructor(private cs: CalculateService ) {
     this.trainingButtons = this.cs.createSampleButtons();
     this.searchUpdated.asObservable()
-      .debounceTime(800)
+      .debounceTime(600)
       .distinctUntilChanged()
       .subscribe(res => {
         this.trainingTextToSend = this.trainingText;
       },
       error=> {},
-      () => {});
+      () => {}
+    );
   }
 
   ngOnInit() {}
+
 
   openPanel(step: number) {
     this.step = step;
   }
 
+
   trainingTextChange() {
+    // set status to training
     this.statusComp.inTraining();
-    
     // reset the example selection
     if (this.trainingText.trim() === "") {
       this.trainingExampleSelect = null;
     }
   }
 
-  onTrainingInput(text) {
-  }
 
   onNextStep() {
     this.step ++;
   }
 
+
   onSetStepRequest(step: number) {
     this.step = step;
   }
+
 
   onStatusChange(status: number) {
     this.trainingStatus = status;
@@ -88,6 +91,7 @@ export class TrainingComponent implements OnInit {
     }
   }
 
+
   loadExampleTraining(selection: string) {
     this.cs.getTrainingExample(selection).subscribe(
       (res: SamplePayload) => {
@@ -98,6 +102,7 @@ export class TrainingComponent implements OnInit {
       }
     )
   }
+
 
   onTrainingExampleSelect(value: MatSelectChange) {
     this.loadExampleTraining(value.value);
