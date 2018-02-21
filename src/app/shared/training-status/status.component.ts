@@ -22,8 +22,7 @@ export class TrainingStatusComponent implements OnChanges {
   helpText: string = "";
   iconClass: string = "";
 
-  constructor(private cs: CalculateService) {
-  }
+  constructor(private cs: CalculateService) {}
 
   ngOnChanges(changes: {[payload: string]: SimpleChange}) {
     if (changes.payload.firstChange || changes.payload.currentValue.trim() === "") {
