@@ -33,12 +33,13 @@ export class TrainingComponent implements OnInit {
   trainingButtonText: string = "Next";
   trainingButtons: SampleButton[];
   trainingExampleSelect: null;
-  public searchUpdated: Subject<string> = new Subject<string>();
+  searchUpdated: Subject<string> = new Subject<string>();
+
 
   constructor(private cs: CalculateService ) {
     this.trainingButtons = this.cs.createSampleButtons();
     this.searchUpdated.asObservable()
-      .debounceTime(600)
+      .debounceTime(500)
       .distinctUntilChanged()
       .subscribe(res => {
         this.trainingTextToSend = this.trainingText;
@@ -107,6 +108,5 @@ export class TrainingComponent implements OnInit {
   onTrainingExampleSelect(value: MatSelectChange) {
     this.loadExampleTraining(value.value);
   }
-
- 
+  
 }

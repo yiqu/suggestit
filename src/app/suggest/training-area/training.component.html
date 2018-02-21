@@ -6,8 +6,7 @@
           Training Area
         </mat-panel-title>
         <mat-panel-description>
-          <training-status #ts [payload]="trainingTextToSend" [timeOut]="300" 
-            (status)="onStatusChange($event)">
+          <training-status #ts [payload]="trainingTextToSend" (status)="onStatusChange($event)">
           </training-status>
         </mat-panel-description>
       </mat-expansion-panel-header>

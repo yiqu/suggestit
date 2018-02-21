@@ -1,5 +1,5 @@
 import { Component, Input, Output, OnChanges, SimpleChange, 
-  EventEmitter } from '@angular/core';
+  EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CalculateService } from '../service/calculate.service';
 import { Word } from '../models/word.model';
 
@@ -7,6 +7,7 @@ import { Word } from '../models/word.model';
   selector: 'training-status',
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.css'],
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class TrainingStatusComponent implements OnChanges {
@@ -15,9 +16,6 @@ export class TrainingStatusComponent implements OnChanges {
 
   @Output()
   status: EventEmitter<number> = new EventEmitter<number>();;
-
-  @Input()
-  timeOut: number;
 
   completed: boolean;
   matIconId: string = "";

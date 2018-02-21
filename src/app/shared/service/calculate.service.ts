@@ -66,7 +66,7 @@ export class CalculateService {
       words.push(word);
     }
     // fake delay for 1 second
-    return Observable.of(words).pipe(delay(1000));
+    return Observable.of(words);
   }
 
 
