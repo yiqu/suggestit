@@ -57,7 +57,7 @@ export class CalculateService {
   sendForProcess(rawText: string): Observable<Array<Word>> {
     let parsedWords: string[] = this.extractWords(rawText);
     let words: Array<Word> = [];
-    for (let parsedWord of parsedWords) {
+    for (let parsedWord of (parsedWords ? parsedWords : [])) {
       // create word
       let word = this.createWord(parsedWord);
       // caluclate weight
@@ -65,7 +65,7 @@ export class CalculateService {
       // add to array
       words.push(word);
     }
-    // fake delay for 1 second
+    console.log(JSON.stringify(words));
     return Observable.of(words);
   }
 

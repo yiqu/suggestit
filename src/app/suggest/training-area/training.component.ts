@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Word } from '../../shared/models/word.model';
 import { CalculateService } from '../../shared/service/calculate.service';
+import { SnackBarService } from '../../shared/service/toast.service';
 import { SampleButton } from '../../shared/models/button-sample.model';
 import { SamplePayload } from '../../shared/models/sample-text.model';
 import { MatSelectChange } from '@angular/material/select';
@@ -9,6 +10,7 @@ import { Subject } from 'rxjs/Subject';
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
 import { TrainingStatusComponent } from '../../shared/training-status/status.component';
+
 
 /**
  * Suggestion component, where word chips are shown
@@ -36,7 +38,7 @@ export class TrainingComponent implements OnInit {
   searchUpdated: Subject<string> = new Subject<string>();
 
 
-  constructor(private cs: CalculateService ) {
+  constructor(private cs: CalculateService, private sbs: SnackBarService) {
     this.trainingButtons = this.cs.createSampleButtons();
     this.searchUpdated.asObservable()
       .debounceTime(500)
@@ -89,23 +91,32 @@ export class TrainingComponent implements OnInit {
       case 1:
         this.trainingButtonText = "Next";
         break;
+      case 2:
+        this.trainingButtonText = "Working...";
+        break;
+      case 3:
+        this.trainingButtonText = "Loading...";
+        break;
     }
   }
 
 
   loadExampleTraining(selection: string) {
+    this.statusComp.loadingExample();
     this.cs.getTrainingExample(selection).subscribe(
       (res: SamplePayload) => {
         this.trainingText = res.data;
       },
       error => {},
       () => {
+        this.trainingTextToSend = this.trainingText;
       }
-    )
+    );
   }
 
 
   onTrainingExampleSelect(value: MatSelectChange) {
+    this.sbs.openSnackBar();
     this.loadExampleTraining(value.value);
   }
   

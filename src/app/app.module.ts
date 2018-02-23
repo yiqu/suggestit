@@ -8,10 +8,12 @@ import { SuggestModule } from './suggest/suggest.module';
 import { TitleModule } from './shared/title/title.module';
 import { NotFoundModule } from './404/404.module';
 import { AppComponent } from './app.component';
+import { SnackBarComponent } from './shared/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SnackBarComponent
   ],
 
   imports: [
@@ -26,6 +28,8 @@ import { AppComponent } from './app.component';
   ],
 
   providers: [],
+  
+  entryComponents: [SnackBarComponent],
 
   bootstrap: [
     AppComponent

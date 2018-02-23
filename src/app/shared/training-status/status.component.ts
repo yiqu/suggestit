@@ -1,5 +1,5 @@
 import { Component, Input, Output, OnChanges, SimpleChange, 
-  EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+  EventEmitter } from '@angular/core';
 import { CalculateService } from '../service/calculate.service';
 import { Word } from '../models/word.model';
 
@@ -7,7 +7,6 @@ import { Word } from '../models/word.model';
   selector: 'training-status',
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.css'],
-  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class TrainingStatusComponent implements OnChanges {
@@ -28,17 +27,18 @@ export class TrainingStatusComponent implements OnChanges {
     if (changes.payload.firstChange || changes.payload.currentValue.trim() === "") {
       this.needTraining();
     } else {
-      // call service to calculate words details
+      this.processing();
       this.cs.sendForProcess(changes.payload.currentValue).subscribe(
         (res: Word[]) => {
-          console.log(res);
+          //console.log(res);
         },
         error => {
         },
         () => {
           this.doneTraining();
         }
-      )
+      );
+      // call service to calculate words details
     }
   }
 
@@ -61,6 +61,20 @@ export class TrainingStatusComponent implements OnChanges {
     this.helpText = "training completed";
     this.iconClass = "training-icon done";
     this.status.emit(1);
+  }
+
+  processing(): void {
+    this.matIconId = "hourglass_full";
+    this.helpText = "working...";
+    this.iconClass = "training-icon working";
+    this.status.emit(2);
+  }
+
+  loadingExample(): void {
+    this.matIconId = "cached";
+    this.helpText = "loading example...";
+    this.iconClass = "training-icon training";
+    this.status.emit(3);
   }
 
 
