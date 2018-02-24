@@ -17,4 +17,7 @@ export class SnackBarComponent {
     this.message = data.message;
     this.status = data.status;
   }
+
+  onDismissClick() {
+  }
 }

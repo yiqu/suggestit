@@ -10,6 +10,7 @@ import { NotFoundModule } from './404/404.module';
 import { AppComponent } from './app.component';
 import { SnackBarComponent } from './shared/snackbar/snackbar.component';
 import { MatIconModule } from '@angular/material';
+import { SnackBarService } from './shared/service/toast.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,13 @@ import { MatIconModule } from '@angular/material';
     TitleModule
   ],
 
-  providers: [],
+  providers: [
+    SnackBarService
+  ],
   
-  entryComponents: [SnackBarComponent],
+  entryComponents: [
+    SnackBarComponent
+  ],
 
   bootstrap: [
     AppComponent

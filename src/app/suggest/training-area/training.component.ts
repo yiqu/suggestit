@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Word } from '../../shared/models/word.model';
 import { CalculateService } from '../../shared/service/calculate.service';
 import { SnackBarService } from '../../shared/service/toast.service';

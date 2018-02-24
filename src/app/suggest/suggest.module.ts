@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { SuggestComponent } from './suggest.component';
 import { TrainingInputModule } from './training-area/training.module';
 import { CalculateService } from '../shared/service/calculate.service';
-import { SnackBarService } from '../shared/service/toast.service';
 
 
 /**
@@ -23,8 +22,7 @@ import { SnackBarService } from '../shared/service/toast.service';
   ],
 
   providers: [
-    CalculateService,
-    SnackBarService
+    CalculateService
   ]
 })
 export class SuggestModule {}
