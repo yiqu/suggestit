@@ -24,3 +24,7 @@
   justify-content: center;
   vertical-align: middle;
 }
+
+.mat-snack-bar-container {
+  padding: 0 !important;
+}

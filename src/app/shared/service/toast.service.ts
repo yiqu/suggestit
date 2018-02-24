@@ -8,12 +8,15 @@ export class SnackBarService {
 
   constructor(public snackBar: MatSnackBar) {}
 
-  openSnackBar() {
+  openSnackBar(status, message) {
     this.snackBar.openFromComponent(SnackBarComponent, {
-      duration: 1500,
-      verticalPosition: "top",
-      horizontalPosition: "right",
-      data: {message:"hello"}
+      duration: 500000,
+      verticalPosition: "bottom",
+      horizontalPosition: "center",
+      data: {
+        status: status,
+        message: message
+      }
     });
   }
 }

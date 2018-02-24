@@ -110,13 +110,14 @@ export class TrainingComponent implements OnInit {
       error => {},
       () => {
         this.trainingTextToSend = this.trainingText;
+        this.sbs.openSnackBar("success", "Loaded successfully");
       }
     );
   }
 
 
   onTrainingExampleSelect(value: MatSelectChange) {
-    this.sbs.openSnackBar();
+    this.sbs.openSnackBar("working", "Loading Example " + value.value + "...");
     this.loadExampleTraining(value.value);
   }
   

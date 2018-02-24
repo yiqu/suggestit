@@ -9,6 +9,7 @@ import { TitleModule } from './shared/title/title.module';
 import { NotFoundModule } from './404/404.module';
 import { AppComponent } from './app.component';
 import { SnackBarComponent } from './shared/snackbar/snackbar.component';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SnackBarComponent } from './shared/snackbar/snackbar.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    MatIconModule,
     NotFoundModule,
     SuggestModule,
     TitleModule
