@@ -60,15 +60,18 @@ export class CalculateService {
     for (let parsedWord of (parsedWords ? parsedWords : [])) {
       // create word
       let word = this.createWord(parsedWord);
-      // caluclate weight
-
       // add to array
       words.push(word);
+      
     }
-    console.log(JSON.stringify(words));
+
+    console.log(JSON.stringify(words), words.length);
     return Observable.of(words);
   }
 
+  wordExist(current: string, word: Word) {
+    return word.word === current;
+  }
 
   createWord(rawWord: string) {
     return new Word(rawWord);
