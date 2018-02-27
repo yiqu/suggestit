@@ -9,7 +9,7 @@ import { Word } from '../models/word.model';
 import { SamplePayload } from '../models/sample-text.model';
 import { Subject } from 'rxjs/Subject';
 import { mapTo, delay } from 'rxjs/operators';
-
+import * as _ from 'lodash';
 
 @Injectable()
 export class CalculateService {
@@ -58,14 +58,23 @@ export class CalculateService {
     let parsedWords: string[] = this.extractWords(rawText);
     let words: Array<Word> = [];
     for (let parsedWord of (parsedWords ? parsedWords : [])) {
-      // create word
-      let word = this.createWord(parsedWord);
-      // add to array
-      words.push(word);
+      // word already exist
+      let currentWord: Word = _.find(words,  _.matchesProperty('word', parsedWord));
+      if (currentWord) {
+        currentWord.occurrence += 1;
+      } else {
+        // word does not exist, add to list
+        let word = this.createWord(parsedWord);
+        words.push(word);
+      }
       
+     
     }
 
-    console.log(JSON.stringify(words), words.length);
+    console.log(JSON.stringify(words), words.length, parsedWords.length);
+
+    //console.log(_.find(words,  _.matchesProperty('word', "year")));
+
     return Observable.of(words);
   }
 

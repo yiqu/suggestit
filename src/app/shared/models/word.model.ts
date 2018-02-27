@@ -6,7 +6,7 @@ export class Word {
 
   constructor(word: string, occurrence?: number, weight?: number, state?: string) {
     this.word = word;
-    this.occurrence = occurrence;
+    this.occurrence = occurrence ? occurrence : 1;
     this.weight = weight;
     this.state = state;
   }
