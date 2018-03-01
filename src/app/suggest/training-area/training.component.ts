@@ -38,7 +38,7 @@ export class TrainingComponent implements OnInit {
   searchUpdated: Subject<string> = new Subject<string>();
 
 
-  constructor(private cs: CalculateService, private sbs: SnackBarService) {
+  constructor(public cs: CalculateService, private sbs: SnackBarService) {
     this.trainingButtons = this.cs.createSampleButtons();
     this.searchUpdated.asObservable()
       .debounceTime(500)

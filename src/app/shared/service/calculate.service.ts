@@ -14,8 +14,8 @@ import * as _ from 'lodash';
 @Injectable()
 export class CalculateService {
 
-  public wordSub: Observable<Word[]> = new Observable<Word[]>();
-  private wordArray: string[];
+  private wordArray: Word[] = [];
+  private parsedWordArray: string[] = [];
 
   /**
    * Creates a new WordService with the injected Http.
@@ -55,35 +55,46 @@ export class CalculateService {
 
 
   sendForProcess(rawText: string): Observable<Array<Word>> {
-    let parsedWords: string[] = this.extractWords(rawText);
-    let words: Array<Word> = [];
-    for (let parsedWord of (parsedWords ? parsedWords : [])) {
+    this.parsedWordArray = this.extractWords(rawText);
+    this.wordArray = [];
+    for (let parsedWord of (this.parsedWordArray ? this.parsedWordArray : [])) {
       // word already exist
-      let currentWord: Word = _.find(words,  _.matchesProperty('word', parsedWord));
+      let currentWord: Word = _.find(this.wordArray,  _.matchesProperty('word', parsedWord));
       if (currentWord) {
         currentWord.occurrence += 1;
       } else {
         // word does not exist, add to list
         let word = this.createWord(parsedWord);
-        words.push(word);
+        this.wordArray.push(word);
       }
       
      
     }
 
-    console.log(JSON.stringify(words), words.length, parsedWords.length);
+    console.log(JSON.stringify(this.wordArray), this.wordArray.length, this.parsedWordArray.length);
 
     //console.log(_.find(words,  _.matchesProperty('word', "year")));
 
-    return Observable.of(words);
+    return Observable.of(this.wordArray);
   }
+
 
   wordExist(current: string, word: Word) {
     return word.word === current;
   }
 
+
   createWord(rawWord: string) {
     return new Word(rawWord);
+  }
+
+  getWordArrayLength(): string {
+    return this.wordArray.length > 0 ? this.wordArray.length + "" : "No";
+  }
+
+
+  getParsedWordArrayLength(): string {
+    return this.parsedWordArray.length > 0 ? this.parsedWordArray.length + "" : "No";;
   }
 
 
