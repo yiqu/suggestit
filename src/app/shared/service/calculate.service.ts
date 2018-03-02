@@ -89,12 +89,14 @@ export class CalculateService {
   }
 
   getWordArrayLength(): string {
-    return this.wordArray.length > 0 ? this.wordArray.length + "" : "No";
+    let length = this.wordArray.length;
+    return length > 0 ? "(" + length + " unique)" : "No words";
   }
 
 
   getParsedWordArrayLength(): string {
-    return this.parsedWordArray.length > 0 ? this.parsedWordArray.length + "" : "No";;
+    let length = this.parsedWordArray.length;
+    return length > 0 ? length + " words " : "";;
   }
 
 
@@ -108,7 +110,8 @@ export class CalculateService {
     if (input === "") {
       return [];
     }
-    return input.toLowerCase().match(/\b[^\d^_\W]+\b/g);
+    let words = input.toLowerCase().match(/\b[^\d^_\W]+\b/g);
+    return words ? words : [];
   }
 
 }

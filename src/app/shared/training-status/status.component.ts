@@ -20,6 +20,7 @@ export class TrainingStatusComponent implements OnChanges {
   matIconId: string = "";
   helpText: string = "";
   iconClass: string = "";
+  wordInfo: string = "";
 
   constructor(private cs: CalculateService) {}
 
@@ -36,6 +37,8 @@ export class TrainingStatusComponent implements OnChanges {
         },
         () => {
           this.doneTraining();
+          this.wordInfo = this.cs.getParsedWordArrayLength() + this.cs.getWordArrayLength();
+          console.log(this.wordInfo)
         }
       );
       // call service to calculate words details
@@ -43,6 +46,7 @@ export class TrainingStatusComponent implements OnChanges {
   }
 
   needTraining(): void {
+    this.wordInfo = "";
     this.matIconId = "info";
     this.helpText = "training required";
     this.iconClass = "training-icon need";
@@ -50,6 +54,7 @@ export class TrainingStatusComponent implements OnChanges {
   }
 
   inTraining(): void {
+    this.wordInfo = "";
     this.matIconId = "mode_edit";
     this.helpText = "typing...";
     this.iconClass = "training-icon training";
@@ -58,12 +63,13 @@ export class TrainingStatusComponent implements OnChanges {
 
   doneTraining(): void {
     this.matIconId = "check_circle";
-    this.helpText = "training completed";
+    this.helpText = "";
     this.iconClass = "training-icon done";
     this.status.emit(1);
   }
 
   processing(): void {
+    this.wordInfo = "";
     this.matIconId = "hourglass_full";
     this.helpText = "working...";
     this.iconClass = "training-icon working";
@@ -71,6 +77,7 @@ export class TrainingStatusComponent implements OnChanges {
   }
 
   loadingExample(): void {
+    this.wordInfo = "";
     this.matIconId = "cached";
     this.helpText = "loading example...";
     this.iconClass = "training-icon training";
