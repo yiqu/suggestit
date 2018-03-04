@@ -90,7 +90,7 @@ export class CalculateService {
 
   getWordArrayLength(): string {
     let length = this.wordArray.length;
-    return length > 0 ? "(" + length + " unique)" : "No words";
+    return length > 0 ? "(" + length + " unique)" : "No words detected.";
   }
 
 
