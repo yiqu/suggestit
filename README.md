@@ -1,6 +1,7 @@
 # Suggestit (under construction)
 
-Predictive type. Live demo: https://yiqu.github.io/suggestit/
+Predictive type. 
+Live demo: https://yiqu.github.io/suggestit/
 
 ## Fork and Run
 
