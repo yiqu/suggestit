@@ -79,11 +79,6 @@ export class CalculateService {
   }
 
 
-  wordExist(current: string, word: Word) {
-    return word.word === current;
-  }
-
-
   createWord(rawWord: string) {
     return new Word(rawWord);
   }
