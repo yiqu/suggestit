@@ -74,6 +74,8 @@ export class CalculateService {
     console.log(JSON.stringify(this.wordArray), this.wordArray.length, this.parsedWordArray.length);
 
     //console.log(_.find(words,  _.matchesProperty('word', "year")));
+    // create obj map with starting letter as key, array of words starting with that letter as value
+    
 
     return Observable.of(this.wordArray);
   }
