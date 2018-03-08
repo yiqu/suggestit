@@ -19,7 +19,6 @@ import { SnackBarService } from './shared/service/toast.service';
   ],
 
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -27,7 +26,8 @@ import { SnackBarService } from './shared/service/toast.service';
     MatIconModule,
     NotFoundModule,
     SuggestModule,
-    TitleModule
+    TitleModule,
+    AppRoutingModule
   ],
 
   providers: [
