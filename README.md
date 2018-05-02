@@ -4,7 +4,7 @@ Predictive type.
 
 Live demo: https://yiqu.github.io/suggestit/
 
-## Fork and Run
+## Fork and Run 
 
 Install Angular-CLI `npm install -g @angular/cli`
 
