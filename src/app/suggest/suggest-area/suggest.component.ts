@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CalculateService } from '../../shared/service/calculate.service';
 
 @Component({
   selector: 'suggest-area',
@@ -21,12 +22,14 @@ export class SuggestInputComponent implements OnInit {
   typeDisabled: boolean = true;
 
 
-  constructor() {}
+  constructor(private cs: CalculateService) {}
 
   ngOnInit() {}
 
   userInputChange() {
-    console.log(this.userInput);
+    console.log("typed "+this.userInput);
+    let wordList = this.cs.getOccuredWords(this.userInput);
+    
   }
 
   previousStep() {

@@ -72,12 +72,16 @@ export class CalculateService {
     }
 
     console.log(JSON.stringify(this.wordArray), this.wordArray.length, this.parsedWordArray.length);
-
     //console.log(_.find(words,  _.matchesProperty('word', "year")));
     // create obj map with starting letter as key, array of words starting with that letter as value
-    
-
     return Observable.of(this.wordArray);
+  }
+
+  public getOccuredWords(userInput: string) {
+    let wordList: Word[] = _.filter(this.wordArray, (word: Word)=> {
+      return word.word.indexOf(userInput) > -1;
+    })
+    console.log(wordList)
   }
 
 
@@ -85,15 +89,19 @@ export class CalculateService {
     return new Word(rawWord);
   }
 
-  getWordArrayLength(): string {
+  public getWordArrayLength(): string {
     let length = this.wordArray.length;
     return length > 0 ? "(" + length + " unique)" : "No words detected.";
   }
 
 
-  getParsedWordArrayLength(): string {
+  public getParsedWordArrayLength(): string {
     let length = this.parsedWordArray.length;
     return length > 0 ? length + " words " : "";;
+  }
+
+  public getWordArray(): Word[] {
+    return this.wordArray;
   }
 
 
