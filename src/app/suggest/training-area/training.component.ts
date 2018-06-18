@@ -51,7 +51,9 @@ export class TrainingComponent implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadExampleTraining("1");
+  }
 
 
   openPanel(step: number) {

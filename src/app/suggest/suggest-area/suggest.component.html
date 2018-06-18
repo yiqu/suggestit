@@ -1,18 +1,22 @@
 <mat-expansion-panel [disabled]="disabled" [expanded]="step===1" (opened)="openPanel(1)">
   <mat-expansion-panel-header>
     <mat-panel-title class="training-title">
-      Suggest Area
+      Suggest Area 
+      <span class="cut-off-label">{{originalLength > 10 ? cutOffLabelText : ''}}</span>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <mat-chip-list class="word-chip-list">
-    <mat-chip *ngFor="let word of wordList" class="word-chip">
-      {{word.word}}
+  <div class="word-chip-list">
+  <mat-chip-list [multiple]="false" [selectable]="false">
+    <mat-chip *ngFor="let word of wordList" class="word-chip" [selectable]="false"
+      (click)="onChipSelect(word)">
+      {{word.word}} ({{word.occurrence}})
     </mat-chip>
   </mat-chip-list>
-  
+  </div>
+
   <textarea matInput class="input-area" [(ngModel)]="userInput" (ngModelChange)="userInputChange()"
-    [placeholder]="userInputPlaceHolder"></textarea>
+    [placeholder]="userInputPlaceHolder" #textareaInput></textarea>
   <mat-action-row>
     <button mat-raised-button color="accent" (click)="previousStep()">Back</button>
   </mat-action-row>
