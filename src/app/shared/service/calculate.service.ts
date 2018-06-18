@@ -77,11 +77,20 @@ export class CalculateService {
     return Observable.of(this.wordArray);
   }
 
-  public getOccuredWords(userInput: string) {
+  /**
+   * Get the word list based on user's input
+   * @param userInput 
+   * @returns words calculated words
+   */
+  public getOccuredWords(userInput: string): Word[] {
     let wordList: Word[] = _.filter(this.wordArray, (word: Word)=> {
-      return word.word.indexOf(userInput) > -1;
-    })
-    console.log(wordList)
+      return word.word.indexOf(userInput) === 0;
+    });
+    wordList = wordList.sort((a: Word, b: Word) => {
+      return b.occurrence - a.occurrence;
+    });
+    console.log(JSON.stringify(wordList));
+    return wordList;
   }
 
 

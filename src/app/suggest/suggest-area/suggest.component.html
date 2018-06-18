@@ -3,10 +3,14 @@
     <mat-panel-title class="training-title">
       Suggest Area
     </mat-panel-title>
-    <mat-panel-description>
-
-    </mat-panel-description>
   </mat-expansion-panel-header>
+
+  <mat-chip-list class="word-chip-list">
+    <mat-chip *ngFor="let word of wordList" class="word-chip">
+      {{word.word}}
+    </mat-chip>
+  </mat-chip-list>
+  
   <textarea matInput class="input-area" [(ngModel)]="userInput" (ngModelChange)="userInputChange()"
     [placeholder]="userInputPlaceHolder"></textarea>
   <mat-action-row>

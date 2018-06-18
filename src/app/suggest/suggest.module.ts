@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { SuggestComponent } from './suggest.component';
 import { TrainingInputModule } from './training-area/training.module';
 import { CalculateService } from '../shared/service/calculate.service';
+import { MaterialModule } from '../shared/common-modules/material.module'
 
 
 /**
@@ -14,7 +15,8 @@ import { CalculateService } from '../shared/service/calculate.service';
   ],
 
   imports: [
-    TrainingInputModule
+    TrainingInputModule,
+    MaterialModule
   ],
 
   exports:[
