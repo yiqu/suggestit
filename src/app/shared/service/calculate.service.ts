@@ -83,9 +83,20 @@ export class CalculateService {
    * @returns words calculated words
    */
   public getOccuredWords(userInput: string): Word[] {
+    let occurSum: number = 0;
+    // filter out words that are typed by user
     let wordList: Word[] = _.filter(this.wordArray, (word: Word)=> {
-      return word.word.indexOf(userInput) === 0;
+      if (word.word.indexOf(userInput) === 0) {
+        occurSum += word.occurrence;
+        return true;
+      }
     });
+    // set the cofidence level percentage
+    wordList.forEach((word: Word) => {
+      word.weight = ((word.occurrence / occurSum) * 100).toPrecision(3);
+      word.state = "Confidence level for this prediction is " + word.weight + "%";
+    });
+    // sort it by occurrence
     wordList = wordList.sort((a: Word, b: Word) => {
       return b.occurrence - a.occurrence;
     });

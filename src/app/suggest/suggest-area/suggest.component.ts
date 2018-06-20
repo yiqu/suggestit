@@ -40,17 +40,24 @@ export class SuggestInputComponent implements OnInit {
   userInputChange() {
     console.log("first typed "+this.userInput);
     if (this.userInput.slice(-1) === " ") {
-      this.wordList.length = 0;
-      this.originalLength = 0;
+      this.resetResult();
     } else if(this.userInput.trim() === "") {
-      this.wordList.length = 0;
-      this.originalLength = 0;
+      this.resetResult();
     } else {
       this.wordList = this.cs.getOccuredWords(this.userInput.match(/\S*$/)[0]);
       this.originalLength = this.wordList.length;
-      this.cutOffLabelText = "(showing top 5 predictions of " + this.originalLength + " found)"; 
-      this.wordList = this.wordList.slice(0, 5);
+      this.extractTopFiveResults();
     }
+  }
+
+  resetResult() {
+    this.wordList.length = 0;
+    this.originalLength = 0;
+  }
+
+  extractTopFiveResults() {
+    this.cutOffLabelText = "(showing top 5 predictions of " + this.originalLength + ")"; 
+    this.wordList = this.wordList.slice(0, 5);
   }
 
   onChipSelect(sel) {

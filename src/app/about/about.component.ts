@@ -35,6 +35,13 @@ export class AboutComponent {
       changes: 'Added more logic for parsing words. Prediction logic added. Added chips to display results, and minor changes',
       externalLink: undefined,
       linkUrl: null
+    },
+    {
+      version: '0.2.2',
+      date: new Date('6/20/18'),
+      changes: 'Added confidence level percentage to results for displaying',
+      externalLink: undefined,
+      linkUrl: null
     }
   ];
 }

@@ -2,15 +2,15 @@
   <mat-expansion-panel-header>
     <mat-panel-title class="training-title">
       Suggest Area 
-      <span class="cut-off-label">{{originalLength > 10 ? cutOffLabelText : ''}}</span>
+      <span class="cut-off-label">{{originalLength > 5 ? cutOffLabelText : ''}}</span>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
   <div class="word-chip-list">
   <mat-chip-list [multiple]="false" [selectable]="false">
     <mat-chip *ngFor="let word of wordList" class="word-chip" [selectable]="false"
-      (click)="onChipSelect(word)">
-      {{word.word}} ({{word.occurrence}})
+      [matTooltip]="word.state" matTooltipClass="chip-tooltip" (click)="onChipSelect(word)">
+      {{word.word}} <span class="word-chip-percent">({{word.weight}}%)</span>
     </mat-chip>
   </mat-chip-list>
   </div>
@@ -18,6 +18,6 @@
   <textarea matInput class="input-area" [(ngModel)]="userInput" (ngModelChange)="userInputChange()"
     [placeholder]="userInputPlaceHolder" #textareaInput></textarea>
   <mat-action-row>
-    <button mat-raised-button color="accent" (click)="previousStep()">Back</button>
+    <button mat-raised-button color="primary" (click)="previousStep()">Back to Training</button>
   </mat-action-row>
 </mat-expansion-panel>
