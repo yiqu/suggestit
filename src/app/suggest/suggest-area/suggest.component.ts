@@ -27,7 +27,7 @@ export class SuggestInputComponent implements OnInit {
   typeDisabled: boolean = true;
   wordList: Word[] = [];
   originalLength: number = 0;
-  cutOffLabelText: string = "(showing top 10 predictions)"
+  cutOffLabelText: string = "(showing top 5 predictions)"
 
   constructor(private cs: CalculateService) {}
 
@@ -48,8 +48,8 @@ export class SuggestInputComponent implements OnInit {
     } else {
       this.wordList = this.cs.getOccuredWords(this.userInput.match(/\S*$/)[0]);
       this.originalLength = this.wordList.length;
-      this.cutOffLabelText = "(showing top 10 predictions of " + this.originalLength + " found)"; 
-      this.wordList = this.wordList.slice(0, 10);
+      this.cutOffLabelText = "(showing top 5 predictions of " + this.originalLength + " found)"; 
+      this.wordList = this.wordList.slice(0, 5);
     }
   }
 

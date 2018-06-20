@@ -28,6 +28,13 @@ export class AboutComponent {
       changes: 'Added input area',
       externalLink: undefined,
       linkUrl: null
+    },
+    {
+      version: '0.2.1',
+      date: new Date('6/18/18'),
+      changes: 'Added more logic for parsing words. Prediction logic added. Added chips to display results, and minor changes',
+      externalLink: undefined,
+      linkUrl: null
     }
   ];
 }
