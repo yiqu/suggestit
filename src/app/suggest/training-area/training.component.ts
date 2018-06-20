@@ -11,7 +11,7 @@ import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
 import { TrainingStatusComponent } from '../../shared/training-status/status.component';
 
-
+const GO_PREDICT_TOOLTIP = "Go to Suggest Area to start typing, and see Suggestive Type in action!";
 /**
  * Suggestion component, where word chips are shown
  * 
@@ -36,7 +36,7 @@ export class TrainingComponent implements OnInit {
   trainingButtons: SampleButton[];
   trainingExampleSelect: null;
   searchUpdated: Subject<string> = new Subject<string>();
-
+  goPredictTooltip: string = GO_PREDICT_TOOLTIP;
 
   constructor(public cs: CalculateService, private sbs: SnackBarService) {
     this.trainingButtons = this.cs.createSampleButtons();
@@ -52,9 +52,7 @@ export class TrainingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadExampleTraining("1");
   }
-
 
   openPanel(step: number) {
     this.step = step;
@@ -70,27 +68,26 @@ export class TrainingComponent implements OnInit {
     }
   }
 
-
   onNextStep() {
     this.step ++;
   }
-
 
   onSetStepRequest(step: number) {
     this.step = step;
   }
 
-
   onStatusChange(status: number) {
     this.trainingStatus = status;
     switch (this.trainingStatus) {
       case -1:
+        this.goPredictTooltip = "Need training text before going to Suggest Area";
         this.trainingButtonText = "Next";
         break;
       case 0:
         this.trainingButtonText = "Training...";
         break;
       case 1:
+        this.goPredictTooltip = GO_PREDICT_TOOLTIP;
         this.trainingButtonText = "Next";
         break;
       case 2:
@@ -101,7 +98,6 @@ export class TrainingComponent implements OnInit {
         break;
     }
   }
-
 
   loadExampleTraining(selection: string) {
     this.statusComp.loadingExample();
@@ -117,10 +113,8 @@ export class TrainingComponent implements OnInit {
     );
   }
 
-
   onTrainingExampleSelect(value: MatSelectChange) {
     this.sbs.openSnackBar("working", "Loading Example " + value.value + "...");
     this.loadExampleTraining(value.value);
   }
-  
 }

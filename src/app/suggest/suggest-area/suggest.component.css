@@ -38,8 +38,9 @@
   font-size: 13px;
   margin-top: 3px;
   margin-left: 5px;
+  color: #8c8c8c;
 }
 
-.chip-tooltip {
-  color: red;
+.loading-results {
+  color: #8c8c8c;
 }

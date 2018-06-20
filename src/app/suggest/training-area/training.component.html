@@ -21,7 +21,7 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <button mat-raised-button [disabled]="trainingStatus !== 1" class="train-button"
+        <button mat-raised-button [disabled]="trainingStatus !== 1" class="train-button" [matTooltip]="goPredictTooltip"
           color="primary" (click)="onNextStep()">{{trainingButtonText}}</button>
       </mat-action-row>
     </mat-expansion-panel>

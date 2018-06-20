@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 import { CalculateService } from '../../shared/service/calculate.service';
 import { Word } from '../../shared/models/word.model';
 import { MatChipSelectionChange } from "@angular/material/chips"
+import { Observable } from 'rxjs/Observable';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'suggest-area',
@@ -28,6 +30,7 @@ export class SuggestInputComponent implements OnInit {
   wordList: Word[] = [];
   originalLength: number = 0;
   cutOffLabelText: string = "(showing top 5 predictions)"
+  wordList$: Observable<Word[]>;
 
   constructor(private cs: CalculateService) {}
 
@@ -58,6 +61,9 @@ export class SuggestInputComponent implements OnInit {
   extractTopFiveResults() {
     this.cutOffLabelText = "(showing top 5 predictions of " + this.originalLength + ")"; 
     this.wordList = this.wordList.slice(0, 5);
+    this.wordList$ = Observable.of(this.wordList).pipe(
+      delay(500)
+    );
   }
 
   onChipSelect(sel) {

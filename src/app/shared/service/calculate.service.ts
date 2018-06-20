@@ -67,13 +67,9 @@ export class CalculateService {
         let word = this.createWord(parsedWord);
         this.wordArray.push(word);
       }
-      
-     
     }
 
     console.log(JSON.stringify(this.wordArray), this.wordArray.length, this.parsedWordArray.length);
-    //console.log(_.find(words,  _.matchesProperty('word', "year")));
-    // create obj map with starting letter as key, array of words starting with that letter as value
     return Observable.of(this.wordArray);
   }
 
@@ -94,7 +90,8 @@ export class CalculateService {
     // set the cofidence level percentage
     wordList.forEach((word: Word) => {
       word.weight = ((word.occurrence / occurSum) * 100).toPrecision(3);
-      word.state = "Confidence level for this prediction is " + word.weight + "%";
+      word.state = "Confidence level for '" + word.word + "' is " + word.weight + "%. This word " + 
+      "occured " + (word.occurrence === 1 ? " once." : (word.occurrence + " times."));
     });
     // sort it by occurrence
     wordList = wordList.sort((a: Word, b: Word) => {

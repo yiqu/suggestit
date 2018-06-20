@@ -28,3 +28,7 @@
 .mat-snack-bar-container {
   padding: 0 !important;
 }
+
+.chip-tooltip {
+  font-size: 13px;
+}
