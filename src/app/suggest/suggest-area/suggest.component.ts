@@ -62,7 +62,7 @@ export class SuggestInputComponent implements OnInit {
     this.cutOffLabelText = "(showing top 5 predictions of " + this.originalLength + ")"; 
     this.wordList = this.wordList.slice(0, 5);
     this.wordList$ = Observable.of(this.wordList).pipe(
-      delay(500)
+      delay(250)
     );
   }
 
