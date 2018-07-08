@@ -31,14 +31,12 @@ export class TrainingStatusComponent implements OnChanges {
       this.processing();
       this.cs.sendForProcess(changes.payload.currentValue).subscribe(
         (res: Word[]) => {
-          //console.log(res);
         },
         error => {
         },
         () => {
           this.doneTraining();
           this.wordInfo = this.cs.getParsedWordArrayLength() + this.cs.getWordArrayLength();
-          console.log(this.wordInfo)
         }
       );
       // call service to calculate words details

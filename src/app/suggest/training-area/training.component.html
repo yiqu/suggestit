@@ -12,7 +12,7 @@
       </mat-expansion-panel-header>
       <textarea matInput class="input-area" [(ngModel)]="trainingText" (ngModelChange)="trainingTextChange()"
         [placeholder]="trainingTextAreaPlaceholder" (keyup)="searchUpdated.next($event)"></textarea>
-      <mat-action-row style="height: 40px;">
+      <mat-action-row class="card-action-row">
         <div class="train-bar">
           <mat-form-field class="train-select">
             <mat-select placeholder="Training Examples" [disableRipple]="true" (selectionChange)="onTrainingExampleSelect($event)"

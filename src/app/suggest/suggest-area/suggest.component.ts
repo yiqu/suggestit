@@ -29,8 +29,9 @@ export class SuggestInputComponent implements OnInit {
   typeDisabled: boolean = true;
   wordList: Word[] = [];
   originalLength: number = 0;
-  cutOffLabelText: string = "(showing top 5 predictions)"
-  wordList$: Observable<Word[]>;
+  cutOffLabelText: string = "(showing top 5 predictions)";
+  // set it to an empty list on start to avoid going to #loading template
+  wordList$: Observable<Word[]> = Observable.of([]);
 
   constructor(private cs: CalculateService) {}
 
@@ -41,7 +42,6 @@ export class SuggestInputComponent implements OnInit {
    * following word after it.
    */
   userInputChange() {
-    console.log("first typed "+this.userInput);
     if (this.userInput.slice(-1) === " ") {
       this.resetResult();
     } else if(this.userInput.trim() === "") {
@@ -62,7 +62,7 @@ export class SuggestInputComponent implements OnInit {
     this.cutOffLabelText = "(showing top 5 predictions of " + this.originalLength + ")"; 
     this.wordList = this.wordList.slice(0, 5);
     this.wordList$ = Observable.of(this.wordList).pipe(
-      delay(250)
+      delay(150)
     );
   }
 

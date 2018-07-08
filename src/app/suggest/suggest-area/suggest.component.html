@@ -7,7 +7,7 @@
   </mat-expansion-panel-header>
 
   <div class="word-chip-list">
-    <mat-chip-list *ngIf="wordList$ | async; let wordList2; else loading" [multiple]="false" [selectable]="false">
+    <mat-chip-list *ngIf="wordList$ | async as wordList2; else loading" [multiple]="false" [selectable]="false">
       <mat-chip *ngFor="let word of wordList2" class="word-chip" [selectable]="false"
         [matTooltip]="word.state" matTooltipClass="chip-tooltip" (click)="onChipSelect(word)">
         {{word.word}} <span class="word-chip-percent">({{word.weight}}%)</span>
@@ -20,7 +20,7 @@
 
   <textarea matInput class="input-area" [(ngModel)]="userInput" (ngModelChange)="userInputChange()"
     [placeholder]="userInputPlaceHolder" #textareaInput></textarea>
-  <mat-action-row>
+  <mat-action-row class="card-action-row">
     <button mat-raised-button color="primary" (click)="previousStep()">Back to Training</button>
   </mat-action-row>
 </mat-expansion-panel>

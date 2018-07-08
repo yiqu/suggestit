@@ -16,6 +16,7 @@
 
 * {
   font-family: Roboto,sans-serif;
+  font-size: 18px;
 }
 
 .material-icons {
@@ -31,4 +32,12 @@
 
 .chip-tooltip {
   font-size: 13px;
+}
+
+.card-action-row {
+  height: 49px;
+}
+
+.training-title {
+  
 }

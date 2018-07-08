@@ -69,7 +69,7 @@ export class CalculateService {
       }
     }
 
-    console.log(JSON.stringify(this.wordArray), this.wordArray.length, this.parsedWordArray.length);
+    //console.log(JSON.stringify(this.wordArray), this.wordArray.length, this.parsedWordArray.length);
     return Observable.of(this.wordArray);
   }
 
@@ -97,7 +97,6 @@ export class CalculateService {
     wordList = wordList.sort((a: Word, b: Word) => {
       return b.occurrence - a.occurrence;
     });
-    console.log(JSON.stringify(wordList));
     return wordList;
   }
 
