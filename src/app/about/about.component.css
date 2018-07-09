@@ -4,7 +4,6 @@
 
 .version {
   font-weight: 600;
-  font-size: 16px;
 }
 
 .about-text {
@@ -14,7 +13,7 @@
 
 .about-title {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: underline;
   text-align: center;
 }

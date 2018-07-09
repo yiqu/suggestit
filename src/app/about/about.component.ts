@@ -49,6 +49,13 @@ export class AboutComponent {
       changes: 'Look and feel update to the word chips, enlarged font. Logic updates',
       externalLink: undefined,
       linkUrl: null
+    },
+    {
+      version: '0.5.0',
+      date: new Date('7/8/18'),
+      changes: 'Added ability to show all results and show less results',
+      externalLink: undefined,
+      linkUrl: null
     }
   ];
 }

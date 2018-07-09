@@ -19,6 +19,7 @@
   letter-spacing: 0px;
   font-size: 18px;
   margin-bottom: 4px;
+  cursor: pointer !important;
 }
 
 .word-chip-percent {
@@ -42,4 +43,9 @@
 
 .loading-results {
   color: #8c8c8c;
+}
+
+.show-all {
+  color: white;
+  background-color: #00802b;
 }

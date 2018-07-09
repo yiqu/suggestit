@@ -7,11 +7,13 @@
   </mat-expansion-panel-header>
 
   <div class="word-chip-list">
-    <mat-chip-list *ngIf="wordList$ | async as wordList2; else loading" [multiple]="false" [selectable]="false">
-      <mat-chip *ngFor="let word of wordList2" class="word-chip" [selectable]="false"
+    <mat-chip-list *ngIf="wordList$ | async as wordListTmp; else loading" [multiple]="false" [selectable]="false">
+      <mat-chip *ngFor="let word of wordListTmp" class="word-chip" [selectable]="false"
         [matTooltip]="word.state" matTooltipClass="chip-tooltip" (click)="onChipSelect(word)">
         {{word.word}} <span class="word-chip-percent">({{word.weight}}%)</span>
       </mat-chip>
+      <mat-chip *ngIf="originalLength > 5" class="word-chip show-all" [selectable]="false" [matTooltip]="showAllTooltip" 
+        matTooltipClass="chip-tooltip" (click)="toggleShowAllResults()">{{toggleShowAll ? 'Show Less' : 'Show More'}}</mat-chip>
     </mat-chip-list>
     <ng-template #loading>
       <span class="loading-results">Loading predictions...</span>

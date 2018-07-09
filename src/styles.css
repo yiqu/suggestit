@@ -3,6 +3,11 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css?family=Poppins|Roboto');
 
+/* Mateiral Overrides */
+.mat-chip {
+  margin: 0 4px 4px 0 !important;
+}
+
 /* Global Properties */
 .wrap {
   max-width: 50rem;
@@ -36,8 +41,4 @@
 
 .card-action-row {
   height: 49px;
-}
-
-.training-title {
-  
 }

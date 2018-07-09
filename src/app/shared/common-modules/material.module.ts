@@ -6,6 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 /**
@@ -19,7 +20,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSelectModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSlideToggleModule
   ],
 
   exports: [
@@ -29,7 +31,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSelectModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSlideToggleModule
   ],
 })
 export class MaterialModule { }

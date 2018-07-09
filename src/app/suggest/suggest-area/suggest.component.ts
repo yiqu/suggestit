@@ -14,13 +14,10 @@ import { delay } from 'rxjs/operators';
 export class SuggestInputComponent implements OnInit {
   @Input()
   step: number;
-
   @Input()
   disabled: boolean;
-
   @Output()
   setStepRequest: EventEmitter<number> = new EventEmitter<number>();
-
   @ViewChild('textareaInput') 
   userInputTextArea: ElementRef;
 
@@ -28,13 +25,23 @@ export class SuggestInputComponent implements OnInit {
   userInputPlaceHolder: string = "Start typing...";
   typeDisabled: boolean = true;
   wordList: Word[] = [];
+  wordListShort: Word[] = [];
   originalLength: number = 0;
   cutOffLabelText: string = "(showing top 5 predictions)";
   // set it to an empty list on start to avoid going to #loading template
   wordList$: Observable<Word[]> = Observable.of([]);
+  showAllTooltip: string = "Show all predictions";
+  toggleShowAll: boolean = false;
 
+  /**
+   * Constructor 
+   * @param cs 
+   */
   constructor(private cs: CalculateService) {}
 
+  /**
+   * On Init
+   */
   ngOnInit() {}
 
   /**
@@ -53,15 +60,22 @@ export class SuggestInputComponent implements OnInit {
     }
   }
 
+ /**
+  * Reset predictions results
+  */
   resetResult() {
     this.wordList.length = 0;
     this.originalLength = 0;
+    this.wordList$ = Observable.of([]);
   }
 
   extractTopFiveResults() {
-    this.cutOffLabelText = "(showing top 5 predictions of " + this.originalLength + ")"; 
-    this.wordList = this.wordList.slice(0, 5);
-    this.wordList$ = Observable.of(this.wordList).pipe(
+    this.cutOffLabelText = this.toggleShowAll ? 
+      "" : "(showing top 5 predictions of " + this.originalLength + ")"; 
+    this.showAllTooltip = this.toggleShowAll ? 
+      "Show less predictions" : "Show all " + this.originalLength + " predictions";
+    this.wordListShort = this.wordList.slice(0, 5);
+    this.wordList$ = Observable.of(this.toggleShowAll ? this.wordList : this.wordListShort).pipe(
       delay(150)
     );
   }
@@ -84,5 +98,10 @@ export class SuggestInputComponent implements OnInit {
     },100);
     // re-calc to reflect any changes user might have made in training area
     this.userInputChange();
+  }
+
+  toggleShowAllResults() {
+    this.toggleShowAll = !this.toggleShowAll;
+    this.extractTopFiveResults();
   }
 }
