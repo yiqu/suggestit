@@ -69,7 +69,7 @@ export class TrainingComponent implements OnInit {
   }
 
   onNextStep() {
-    this.step ++;
+    this.step++;
   }
 
   onSetStepRequest(step: number) {

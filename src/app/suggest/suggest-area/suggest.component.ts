@@ -5,6 +5,8 @@ import { MatChipSelectionChange } from "@angular/material/chips"
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/operators';
 
+const EMPTY_SPACE_CHAR = " ";
+
 @Component({
   selector: 'suggest-area',
   templateUrl: './suggest.component.html',
@@ -80,8 +82,15 @@ export class SuggestInputComponent implements OnInit {
     );
   }
 
-  onChipSelect(sel) {
-    console.log(sel)
+  onChipSelect(sel: Word) {
+    this.setTextAreaFocus();
+    // split user inputs into array of words split by spaces
+    let words = this.userInput.split(" ");
+    // find the last index of the last unfinished word
+    let lasti = this.userInput.lastIndexOf(words[words.length - 1]);
+    // replace the last unfinished word with selected word
+    this.userInput = this.userInput.slice(0, lasti) + sel.word + EMPTY_SPACE_CHAR;
+    this.resetResult();
   }
 
   previousStep() {
@@ -94,14 +103,19 @@ export class SuggestInputComponent implements OnInit {
     this.setStepRequest.emit(this.step);
     // take into account view fully loaded
     setTimeout(()=> {
-      this.userInputTextArea.nativeElement.focus()
+      this.setTextAreaFocus();
     },100);
     // re-calc to reflect any changes user might have made in training area
     this.userInputChange();
   }
 
+  setTextAreaFocus() {
+    this.userInputTextArea.nativeElement.focus();
+  }
+
   toggleShowAllResults() {
     this.toggleShowAll = !this.toggleShowAll;
     this.extractTopFiveResults();
+    this.setTextAreaFocus();
   }
 }
