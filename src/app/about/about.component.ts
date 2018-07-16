@@ -56,6 +56,13 @@ export class AboutComponent {
       changes: 'Added ability to show all results and show less results',
       externalLink: undefined,
       linkUrl: null
+    },
+    {
+      version: '0.6.0',
+      date: new Date('7/14/18'),
+      changes: 'Added ability for click and input suggested word into text box',
+      externalLink: undefined,
+      linkUrl: null
     }
   ];
 }
