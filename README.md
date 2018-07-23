@@ -1,4 +1,4 @@
-# Suggestit (under construction)
+# Suggestit
 
 Predictive type.
 
