@@ -1,6 +1,6 @@
 # Suggestit
 
-Predictive type.
+Predictive type limited.
 
 Live demo: https://yiqu.github.io/suggestit/
 
